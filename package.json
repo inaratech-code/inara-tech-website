@@ -12,11 +12,8 @@
     "preview": "vite preview",
     "preview:build": "npm run build && npm run preview",
     "clean": "rm -rf dist",
-    "deploy": "npm run build && firebase deploy",
-    "deploy:firebase": "npm run build && firebase deploy",
+    "deploy": "npm run build && wrangler pages deploy dist",
     "deploy:cloudflare": "npm run build && wrangler pages deploy dist",
-    "deploy:all": "npm run build && firebase deploy && wrangler pages deploy dist",
-    "firebase:init": "firebase init hosting",
     "cloudflare:init": "wrangler pages project create inara-tech-website"
   },
   "dependencies": {
