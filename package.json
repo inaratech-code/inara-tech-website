@@ -14,7 +14,10 @@
     "clean": "rm -rf dist",
     "deploy": "npm run build && firebase deploy",
     "deploy:firebase": "npm run build && firebase deploy",
-    "firebase:init": "firebase init hosting"
+    "deploy:cloudflare": "npm run build && wrangler pages deploy dist",
+    "deploy:all": "npm run build && firebase deploy && wrangler pages deploy dist",
+    "firebase:init": "firebase init hosting",
+    "cloudflare:init": "wrangler pages project create inara-tech-website"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.27",
