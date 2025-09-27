@@ -6,6 +6,8 @@ import TestimonialForm from '../components/TestimonialForm'
 
 const TestimonialsPage = () => {
   const [isMobile, setIsMobile] = useState(false)
+  const [showForm, setShowForm] = useState(false)
+  const [testimonials, setTestimonials] = useState([])
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -15,6 +17,20 @@ const TestimonialsPage = () => {
     window.addEventListener('resize', checkScreenSize)
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
+
+  // Load testimonials from localStorage
+  useEffect(() => {
+    const savedTestimonials = localStorage.getItem('inaratech_testimonials')
+    if (savedTestimonials) {
+      setTestimonials(JSON.parse(savedTestimonials))
+    }
+  }, [])
+
+  // Handle new testimonial added from form
+  const handleTestimonialAdded = (updatedTestimonials) => {
+    setTestimonials(updatedTestimonials)
+    setShowForm(false) // Hide form after submission
+  }
 
   const pageVariants = {
     hidden: { 
@@ -77,6 +93,117 @@ const TestimonialsPage = () => {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* Testimonial Form Toggle */}
+      <motion.div 
+        className="text-center mb-16"
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <motion.button
+          onClick={() => setShowForm(!showForm)}
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
+          whileHover={{
+            scale: 1.05,
+            rotateX: 3,
+            rotateY: 2,
+            z: 15,
+            transition: { duration: 0.3, ease: "easeOut" }
+          }}
+          whileTap={{
+            scale: 0.98,
+            transition: { duration: 0.1 }
+          }}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          <MessageSquare className="w-5 h-5" />
+          {showForm ? 'Hide Testimonial Form' : 'Share Your Experience'}
+        </motion.button>
+      </motion.div>
+
+      {/* Testimonial Form */}
+      {showForm && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="mb-16"
+        >
+          <TestimonialForm onTestimonialAdded={handleTestimonialAdded} />
+        </motion.div>
+      )}
+
+      {/* External Testimonials Buttons */}
+      <motion.div 
+        className="text-center mb-16 space-y-4"
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <motion.a
+            href="https://testimonial.to/inara-tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
+            whileHover={{
+              scale: 1.05,
+              rotateX: 3,
+              rotateY: 2,
+              z: 15,
+              transition: { duration: 0.3, ease: "easeOut" }
+            }}
+            whileTap={{
+              scale: 0.98,
+              transition: { duration: 0.1 }
+            }}
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            View All External Testimonials
+            <motion.div
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              →
+            </motion.div>
+          </motion.a>
+          
+          <motion.a
+            href="https://testimonial.to/inara-tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
+            whileHover={{
+              scale: 1.05,
+              rotateX: 3,
+              rotateY: 2,
+              z: 15,
+              transition: { duration: 0.3, ease: "easeOut" }
+            }}
+            whileTap={{
+              scale: 0.98,
+              transition: { duration: 0.1 }
+            }}
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            Submit New Testimonial
+            <motion.div
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+            >
+              →
+            </motion.div>
+          </motion.a>
+        </div>
+        
+        <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+          We have testimonials both on our website and collected through our external testimonial platform. 
+          Choose the option that works best for you!
+        </p>
+      </motion.div>
 
       {/* All Testimonials */}
       <Testimonials showAll={true} />
