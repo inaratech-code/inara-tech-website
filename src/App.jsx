@@ -15,6 +15,7 @@ import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Contact from './pages/Contact'
 import TestimonialsPage from './pages/TestimonialsPage'
+import Admin from './pages/Admin'
 
 
 // ScrollToTop component to scroll to top on route change
@@ -48,6 +49,8 @@ const BackgroundImage = ({ pathname }) => {
       case '/blog':
         return 'logo-gradient-background'
       case '/testimonials':
+        return 'logo-gradient-background'
+      case '/admin':
         return 'logo-gradient-background'
       default:
         return 'logo-gradient-background'
@@ -121,6 +124,7 @@ function AppContent() {
             <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
             <Route path="/testimonials" element={<PageTransition><TestimonialsPage /></PageTransition>} />
             <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+            <Route path="/admin" element={<PageTransition><Admin /></PageTransition>} />
           </Routes>
         </AnimatePresence>
         <Footer />

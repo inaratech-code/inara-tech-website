@@ -305,21 +305,31 @@ const Footer = () => {
               </motion.div>
 
               {/* Credit */}
-              <motion.p 
-                className="text-sm text-muted-foreground flex items-center"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                Crafted with 
-                <motion.div
-                  variants={heartVariants}
-                  animate="animate"
-                  className="mx-1"
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <motion.a
+                  href="/admin"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <Heart size={isMobile ? 14 : 16} className="text-red-500" />
-                </motion.div>
-                by Akshay Mohpal
-              </motion.p>
+                  Manage Testimonials
+                </motion.a>
+                <motion.p 
+                  className="text-sm text-muted-foreground flex items-center"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Crafted with 
+                  <motion.div
+                    variants={heartVariants}
+                    animate="animate"
+                    className="mx-1"
+                  >
+                    <Heart size={isMobile ? 14 : 16} className="text-red-500" />
+                  </motion.div>
+                  by Akshay Mohpal
+                </motion.p>
+              </div>
             </div>
           </div>
         </motion.div>

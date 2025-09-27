@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 const Testimonials = ({ showAll = false, maxItems = 3 }) => {
   const [isMobile, setIsMobile] = useState(false)
+  const [testimonials, setTestimonials] = useState([])
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -14,8 +15,14 @@ const Testimonials = ({ showAll = false, maxItems = 3 }) => {
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
 
-  // Sample testimonials data - you can replace this with real testimonials
-  const testimonials = [
+  // Load testimonials from localStorage
+  useEffect(() => {
+    const savedTestimonials = localStorage.getItem('inaratech_testimonials')
+    if (savedTestimonials) {
+      setTestimonials(JSON.parse(savedTestimonials))
+    } else {
+      // Fallback sample testimonials if none are saved
+      const sampleTestimonials = [
     {
       id: 1,
       name: "Sarah Johnson",
@@ -76,7 +83,23 @@ const Testimonials = ({ showAll = false, maxItems = 3 }) => {
       avatar: "👨‍🚀",
       featured: false
     }
-  ]
+      ]
+      setTestimonials(sampleTestimonials)
+    }
+  }, [])
+
+  // Listen for testimonials updates (when admin adds new ones)
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const savedTestimonials = localStorage.getItem('inaratech_testimonials')
+      if (savedTestimonials) {
+        setTestimonials(JSON.parse(savedTestimonials))
+      }
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+    return () => window.removeEventListener('storage', handleStorageChange)
+  }, [])
 
   // Filter testimonials based on showAll prop
   const displayTestimonials = showAll ? testimonials : testimonials.slice(0, maxItems)
