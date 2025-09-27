@@ -227,19 +227,37 @@ const Footer = () => {
               Quick Links
             </motion.h3>
             <ul className="space-y-2">
-              {['Home', 'About', 'Services', 'Blog', 'Contact'].map((item, index) => (
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'About', path: '/about' },
+                { name: 'Services', path: '/services' },
+                { name: 'Blog', path: '/blog' },
+                { name: 'Testimonials', path: 'https://testimonial.to/inara-tech', external: true },
+                { name: 'Contact', path: '/contact' }
+              ].map((item, index) => (
                 <motion.li 
-                  key={item}
+                  key={item.name}
                   custom={index}
                   variants={linkVariants}
                   whileHover="hover"
                 >
-                  <Link
-                    to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {item}
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </motion.li>
               ))}
             </ul>

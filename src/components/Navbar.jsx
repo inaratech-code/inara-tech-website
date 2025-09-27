@@ -38,6 +38,7 @@ const Navbar = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Blog', path: '/blog' },
+    { name: 'Testimonials', path: 'https://testimonial.to/inara-tech', external: true },
     { name: 'Contact', path: '/contact' },
   ]
 
@@ -192,23 +193,34 @@ const Navbar = () => {
                   variants={navItemVariants}
                   whileHover="hover"
                 >
-                  <Link
-                    to={item.path}
-                    className={`relative text-base font-semibold tracking-wide transition-all duration-300 hover:text-primary px-4 py-2 rounded-lg hover:bg-primary/5 font-robotic ${
-                      location.pathname === item.path ? 'text-primary bg-primary/10' : 'text-foreground/80'
-                    }`}
-                  >
-                    {item.name}
-                    {location.pathname === item.path && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute -bottom-1 left-0 right-0 h-1 bg-primary rounded-full"
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative text-base font-semibold tracking-wide transition-all duration-300 hover:text-primary px-4 py-2 rounded-lg hover:bg-primary/5 font-robotic text-foreground/80"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className={`relative text-base font-semibold tracking-wide transition-all duration-300 hover:text-primary px-4 py-2 rounded-lg hover:bg-primary/5 font-robotic ${
+                        location.pathname === item.path ? 'text-primary bg-primary/10' : 'text-foreground/80'
+                      }`}
+                    >
+                      {item.name}
+                      {location.pathname === item.path && (
+                        <motion.div
+                          layoutId="activeTab"
+                          className="absolute -bottom-1 left-0 right-0 h-1 bg-primary rounded-full"
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
               
@@ -264,17 +276,29 @@ const Navbar = () => {
                     }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Link
-                      to={item.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`block text-4xl md:text-6xl font-bold tracking-wider transition-all duration-300 hover:text-primary px-6 py-4 rounded-xl hover:bg-primary/5 ${
-                        location.pathname === item.path
-                          ? 'text-primary bg-primary/10'
-                          : 'text-foreground/80'
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
+                    {item.external ? (
+                      <a
+                        href={item.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsOpen(false)}
+                        className="block text-4xl md:text-6xl font-bold tracking-wider transition-all duration-300 hover:text-primary px-6 py-4 rounded-xl hover:bg-primary/5 text-foreground/80"
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`block text-4xl md:text-6xl font-bold tracking-wider transition-all duration-300 hover:text-primary px-6 py-4 rounded-xl hover:bg-primary/5 ${
+                          location.pathname === item.path
+                            ? 'text-primary bg-primary/10'
+                            : 'text-foreground/80'
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
               </div>
