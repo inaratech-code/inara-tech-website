@@ -232,7 +232,7 @@ const Footer = () => {
                 { name: 'About', path: '/about' },
                 { name: 'Services', path: '/services' },
                 { name: 'Blog', path: '/blog' },
-                { name: 'Testimonials', path: 'https://testimonial.to/inara-tech', external: true },
+                { name: 'Testimonials', path: '/testimonials' },
                 { name: 'Contact', path: '/contact' }
               ].map((item, index) => (
                 <motion.li 
@@ -241,23 +241,12 @@ const Footer = () => {
                   variants={linkVariants}
                   whileHover="hover"
                 >
-                  {item.external ? (
-                    <a
-                      href={item.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <Link
-                      to={item.path}
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {item.name}
-                    </Link>
-                  )}
+                  <Link
+                    to={item.path}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {item.name}
+                  </Link>
                 </motion.li>
               ))}
             </ul>

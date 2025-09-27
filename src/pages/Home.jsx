@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Play } from 'lucide-react'
 import { Button } from '../components/ui/button'
 import { useState, useEffect } from 'react'
+import Testimonials from '../components/Testimonials'
 
 const Home = () => {
   const [isMobile, setIsMobile] = useState(false)
@@ -586,6 +587,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials maxItems={3} />
 
       {/* Contact Section */}
       <section id="contact" className="py-16 md:py-24 lg:py-32 px-4 md:px-6 lg:px-8 logo-gradient-background">

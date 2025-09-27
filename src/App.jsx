@@ -14,6 +14,7 @@ import Services from './pages/Services'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Contact from './pages/Contact'
+import TestimonialsPage from './pages/TestimonialsPage'
 
 
 // ScrollToTop component to scroll to top on route change
@@ -45,6 +46,8 @@ const BackgroundImage = ({ pathname }) => {
       case '/contact':
         return 'doodle-watermark-contact'
       case '/blog':
+        return 'logo-gradient-background'
+      case '/testimonials':
         return 'logo-gradient-background'
       default:
         return 'logo-gradient-background'
@@ -116,6 +119,7 @@ function AppContent() {
             <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
             <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
             <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
+            <Route path="/testimonials" element={<PageTransition><TestimonialsPage /></PageTransition>} />
             <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
           </Routes>
         </AnimatePresence>
