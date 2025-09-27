@@ -1,12 +1,10 @@
 import { motion } from 'framer-motion'
-import { Star, Quote, Plus, MessageSquare } from 'lucide-react'
+import { Star, Quote } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import TestimonialForm from './TestimonialForm'
 
 const Testimonials = ({ showAll = false, maxItems = 3 }) => {
   const [isMobile, setIsMobile] = useState(false)
   const [testimonials, setTestimonials] = useState([])
-  const [showForm, setShowForm] = useState(false)
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -103,11 +101,6 @@ const Testimonials = ({ showAll = false, maxItems = 3 }) => {
     return () => window.removeEventListener('storage', handleStorageChange)
   }, [])
 
-  // Handle new testimonial added from form
-  const handleTestimonialAdded = (updatedTestimonials) => {
-    setTestimonials(updatedTestimonials)
-    setShowForm(false) // Hide form after submission
-  }
 
   // Filter testimonials based on showAll prop
   const displayTestimonials = showAll ? testimonials : testimonials.slice(0, maxItems)
@@ -185,45 +178,6 @@ const Testimonials = ({ showAll = false, maxItems = 3 }) => {
           </p>
         </motion.div>
 
-        {/* Testimonial Form Toggle */}
-        {!showAll && (
-          <motion.div 
-            className="text-center mb-12"
-            variants={cardVariants}
-          >
-            <motion.button
-              onClick={() => setShowForm(!showForm)}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
-              whileHover={{
-                scale: 1.05,
-                rotateX: 3,
-                rotateY: 2,
-                z: 15,
-                transition: { duration: 0.3, ease: "easeOut" }
-              }}
-              whileTap={{
-                scale: 0.98,
-                transition: { duration: 0.1 }
-              }}
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              <MessageSquare className="w-5 h-5" />
-              {showForm ? 'Hide Testimonial Form' : 'Share Your Experience'}
-            </motion.button>
-          </motion.div>
-        )}
-
-        {/* Testimonial Form */}
-        {showForm && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="mb-12"
-          >
-            <TestimonialForm onTestimonialAdded={handleTestimonialAdded} />
-          </motion.div>
-        )}
 
         {/* Testimonials Grid */}
         <motion.div 

@@ -20,26 +20,18 @@ const Footer = () => {
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
 
-  // Site view counter
+  // Site view counter - counts every page load
   useEffect(() => {
     const trackSiteView = () => {
       const viewKey = 'site_total_views'
-      const lastVisitKey = 'site_last_visit'
-      const today = new Date().toDateString()
       
       // Get current views
       const currentViews = parseInt(localStorage.getItem(viewKey) || '0')
       
-      // Check if this is a new day visit
-      const lastVisit = localStorage.getItem(lastVisitKey)
-      if (lastVisit !== today) {
-        const newViews = currentViews + 1
-        localStorage.setItem(viewKey, newViews.toString())
-        localStorage.setItem(lastVisitKey, today)
-        setSiteViews(newViews)
-      } else {
-        setSiteViews(currentViews)
-      }
+      // Increment on every page load
+      const newViews = currentViews + 1
+      localStorage.setItem(viewKey, newViews.toString())
+      setSiteViews(newViews)
     }
 
     trackSiteView()
@@ -301,7 +293,20 @@ const Footer = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <Eye size={isMobile ? 14 : 16} className="text-primary" />
-                <span className="font-medium">{siteViews.toLocaleString()} site visits</span>
+                <span className="font-medium">{siteViews.toLocaleString()} visits</span>
+                {/* Reset button for testing (only visible in development) */}
+                {process.env.NODE_ENV === 'development' && (
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem('site_total_views')
+                      setSiteViews(0)
+                    }}
+                    className="ml-2 text-xs text-red-500 hover:text-red-700 underline"
+                    title="Reset counter (dev only)"
+                  >
+                    Reset
+                  </button>
+                )}
               </motion.div>
 
               {/* Credit */}

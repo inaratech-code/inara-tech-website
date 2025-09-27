@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { MessageSquare } from 'lucide-react'
 import Testimonials from '../components/Testimonials'
+import TestimonialForm from '../components/TestimonialForm'
 
 const TestimonialsPage = () => {
   const [isMobile, setIsMobile] = useState(false)
