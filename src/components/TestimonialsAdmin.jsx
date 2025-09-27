@@ -93,17 +93,30 @@ const TestimonialsAdmin = () => {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="bg-gradient-to-br from-background/50 to-background/30 backdrop-blur-sm rounded-xl p-8 border border-border/30">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
             Manage Testimonials
           </h2>
-          <Button
-            onClick={() => setIsEditing(true)}
-            className="bg-primary hover:bg-primary/90"
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Add Testimonial
-          </Button>
+          <div className="flex gap-3">
+            <a
+              href="https://testimonial.to/inara-tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
+            >
+              <span>View External Testimonials</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <Button
+              onClick={() => setIsEditing(true)}
+              className="bg-primary hover:bg-primary/90 text-white px-6 py-3 text-lg font-semibold"
+            >
+              <Plus className="w-5 h-5 mr-2" />
+              Add Testimonial
+            </Button>
+          </div>
         </div>
 
         {/* Form */}
@@ -298,18 +311,30 @@ const TestimonialsAdmin = () => {
         </div>
 
         {/* Instructions */}
-        <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-          <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
-            How to use:
-          </h3>
-          <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1">
-            <li>• Click "Add Testimonial" to create a new testimonial</li>
-            <li>• Fill in all the required fields</li>
-            <li>• Choose an avatar from the emoji options</li>
-            <li>• Set the rating (1-5 stars)</li>
-            <li>• Mark as "Featured" to highlight important testimonials</li>
-            <li>• Testimonials are automatically saved to your browser's local storage</li>
-          </ul>
+        <div className="mt-8 space-y-4">
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+            <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
+              How to use:
+            </h3>
+            <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1">
+              <li>• Click "Add Testimonial" to create a new testimonial for your website</li>
+              <li>• Fill in all the required fields</li>
+              <li>• Choose an avatar from the emoji options</li>
+              <li>• Set the rating (1-5 stars)</li>
+              <li>• Mark as "Featured" to highlight important testimonials</li>
+              <li>• Testimonials are automatically saved to your browser's local storage</li>
+            </ul>
+          </div>
+          
+          <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+            <h3 className="font-semibold text-green-900 dark:text-green-100 mb-2">
+              External Testimonials:
+            </h3>
+            <p className="text-sm text-green-800 dark:text-green-200">
+              You also have testimonials collected on <strong>testimonial.to/inara-tech</strong>. 
+              Click "View External Testimonials" above to see all your collected testimonials in one place.
+            </p>
+          </div>
         </div>
       </div>
     </div>
