@@ -165,18 +165,6 @@ const Testimonials = ({ showAll = false, maxItems = 3 }) => {
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          variants={cardVariants}
-        >
-          <h2 className="font-bold tracking-tight mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl gradient-text">
-            What Our Clients Say
-          </h2>
-          <p className="text-muted-foreground font-light tracking-wide max-w-3xl mx-auto text-lg sm:text-xl md:text-2xl">
-            Don't just take our word for it. Here's what our satisfied clients have to say about working with INARA TECH.
-          </p>
-        </motion.div>
 
 
         {/* Testimonials Grid */}
