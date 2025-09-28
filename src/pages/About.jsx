@@ -349,6 +349,90 @@ const About = () => {
         </div>
       </section>
 
+      {/* Mission Section */}
+      <section className="py-20 bg-gradient-to-br from-[#1e3a8a]/5 via-background to-[#93c5fd]/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: isMobile ? 0.6 : 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className={`font-bold mb-6 ${isMobile ? 'text-3xl sm:text-4xl' : 'text-4xl md:text-5xl'} gradient-text`}>
+              Our Mission
+            </h2>
+            <p className={`text-muted-foreground max-w-4xl mx-auto ${isMobile ? 'text-lg' : 'text-xl md:text-2xl'}`}>
+              We are a forward-thinking creative agency dedicated to pushing the boundaries of digital innovation.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              variants={contentVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={{
+                rotateX: 3,
+                rotateY: 2,
+                scale: 1.01,
+                z: 15,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <h3 className={`font-bold mb-6 text-gray-800 dark:text-white ${isMobile ? 'text-2xl' : 'text-2xl md:text-3xl'}`}>
+                Our Mission
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                At INARA TECH, we believe in the power of technology to transform ideas into extraordinary digital experiences. Our team of creative professionals combines artistic vision with technical expertise to deliver solutions that not only meet your needs but exceed your expectations.
+              </p>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                We specialize in creating immersive digital experiences that engage audiences, build brand loyalty, and drive business growth. From concept to completion, we're committed to delivering excellence in every project.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="grid grid-cols-2 gap-6"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {[
+                { number: "50+", label: "Projects Completed" },
+                { number: "25+", label: "Happy Clients" },
+                { number: "5+", label: "Years Experience" },
+                { number: "100%", label: "Client Satisfaction" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gradient-to-br from-background/50 to-background/30 backdrop-blur-sm rounded-xl p-6 text-center border border-border/30"
+                  variants={cardVariants}
+                  whileHover={{
+                    y: -10,
+                    rotateX: 5,
+                    rotateY: 3,
+                    scale: 1.05,
+                    z: 20,
+                    transition: { duration: 0.3, ease: "easeOut" }
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <div className={`font-bold text-primary mb-2 ${isMobile ? 'text-3xl' : 'text-3xl md:text-4xl'}`}>
+                    {stat.number}
+                  </div>
+                  <div className={`text-gray-600 dark:text-gray-300 ${isMobile ? 'text-sm' : 'text-sm md:text-base'}`}>
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Personal Info */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
