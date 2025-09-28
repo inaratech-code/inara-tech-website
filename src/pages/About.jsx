@@ -395,10 +395,10 @@ const About = () => {
               viewport={{ once: true }}
             >
               {[
-                { number: "50+", label: "Projects Completed" },
-                { number: "25+", label: "Happy Clients" },
-                { number: "5+", label: "Years Experience" },
-                { number: "100%", label: "Client Satisfaction" }
+                { number: "50+", label: "Projects Completed", emoji: "🚀" },
+                { number: "25+", label: "Happy Clients", emoji: "😊" },
+                { number: "5+", label: "Years Experience", emoji: "⭐" },
+                { number: "100%", label: "Client Satisfaction", emoji: "💯" }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -414,6 +414,9 @@ const About = () => {
                   }}
                   style={{ transformStyle: "preserve-3d" }}
                 >
+                  <div className="text-4xl mb-3">
+                    {stat.emoji}
+                  </div>
                   <div className={`font-bold text-primary mb-2 ${isMobile ? 'text-3xl' : 'text-3xl md:text-4xl'}`}>
                     {stat.number}
                   </div>
