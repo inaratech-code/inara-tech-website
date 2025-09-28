@@ -518,11 +518,12 @@ const Services = () => {
                       viewport={{ once: true }}
                     >
                       <div className="flex items-center">
-                        <div className="w-6 h-0.5 bg-gradient-to-r from-primary/30 to-primary/20"></div>
+                        <div className="w-6 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full shadow-lg"></div>
                         <motion.div
-                          className="w-0 h-0 border-l-[6px] border-l-primary/40 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-1"
+                          className="w-0 h-0 border-l-[8px] border-l-pink-500 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent ml-1 drop-shadow-sm"
                           animate={{
-                            x: [0, 2, 0],
+                            x: [0, 3, 0],
+                            scale: [1, 1.1, 1],
                           }}
                           transition={{
                             duration: 2,
