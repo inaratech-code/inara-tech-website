@@ -168,13 +168,31 @@ const Services = () => {
           >
             <motion.h1 
               className="text-4xl md:text-5xl font-bold mb-6"
-              variants={titleVariants}
+              initial={{ 
+                opacity: 0, 
+                y: -50, 
+                rotateX: -30,
+                scale: 0.8
+              }}
+              animate={{ 
+                opacity: 1, 
+                y: 0, 
+                rotateX: 0,
+                scale: 1
+              }}
+              transition={{ 
+                duration: 1.2, 
+                delay: 0.2,
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+              }}
               whileHover={{
-                rotateX: 8,
-                rotateY: 8,
-                scale: 1.05,
-                z: 30,
-                transition: { duration: 0.3, ease: "easeOut" }
+                rotateX: 15,
+                rotateY: 10,
+                scale: 1.08,
+                z: 40,
+                transition: { duration: 0.4, ease: "easeOut" }
               }}
               style={{ transformStyle: "preserve-3d" }}
             >
@@ -182,12 +200,30 @@ const Services = () => {
             </motion.h1>
             <motion.p 
               className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8"
-              variants={titleVariants}
+              initial={{ 
+                opacity: 0, 
+                x: -100, 
+                rotateY: -45,
+                scale: 0.9
+              }}
+              animate={{ 
+                opacity: 1, 
+                x: 0, 
+                rotateY: 0,
+                scale: 1
+              }}
+              transition={{ 
+                duration: 1.0, 
+                delay: 0.5,
+                type: "spring",
+                stiffness: 80,
+                damping: 12
+              }}
               whileHover={{
-                rotateX: -5,
-                rotateY: -5,
-                scale: 1.03,
-                z: 25,
+                rotateX: -8,
+                rotateY: -12,
+                scale: 1.05,
+                z: 30,
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
               style={{ transformStyle: "preserve-3d" }}
@@ -195,12 +231,47 @@ const Services = () => {
               Enterprise-grade technology solutions designed to drive digital transformation and business growth. 
               From AI integration to cloud infrastructure, we deliver innovative solutions that scale.
             </motion.p>
-            <Button asChild size="lg" className="flex items-center mx-auto" data-cursor-text="Get Started">
-              <Link to="/contact" className="flex items-center">
-                Get Started
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+            <motion.div
+              initial={{ 
+                opacity: 0, 
+                y: 50, 
+                rotateX: 30,
+                scale: 0.7
+              }}
+              animate={{ 
+                opacity: 1, 
+                y: 0, 
+                rotateX: 0,
+                scale: 1
+              }}
+              transition={{ 
+                duration: 1.1, 
+                delay: 0.8,
+                type: "spring",
+                stiffness: 120,
+                damping: 18
+              }}
+              whileHover={{
+                rotateX: 5,
+                rotateY: 8,
+                scale: 1.1,
+                z: 35,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              whileTap={{
+                scale: 0.95,
+                rotateX: -5,
+                transition: { duration: 0.1 }
+              }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <Button asChild size="lg" className="flex items-center mx-auto" data-cursor-text="Get Started">
+                <Link to="/contact" className="flex items-center">
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
