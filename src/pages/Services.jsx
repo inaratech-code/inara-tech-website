@@ -195,7 +195,7 @@ const Services = () => {
               Enterprise-grade technology solutions designed to drive digital transformation and business growth. 
               From AI integration to cloud infrastructure, we deliver innovative solutions that scale.
             </motion.p>
-            <Button size="lg" className="flex items-center mx-auto" data-cursor-text="Get Started">
+            <Button asChild size="lg" className="flex items-center mx-auto" data-cursor-text="Get Started">
               <Link to="/contact" className="flex items-center">
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -286,8 +286,10 @@ const Services = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full" variant="outline" data-cursor-text="Learn More">
-                      Learn More
+                    <Button asChild className="w-full" variant="outline" data-cursor-text="Learn More">
+                      <Link to="/contact">
+                        Learn More
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
