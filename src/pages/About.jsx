@@ -359,12 +359,6 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className={`font-bold mb-6 ${isMobile ? 'text-3xl sm:text-4xl' : 'text-4xl md:text-5xl'} gradient-text`}>
-              Our Mission
-            </h2>
-            <p className={`text-muted-foreground max-w-4xl mx-auto ${isMobile ? 'text-lg' : 'text-xl md:text-2xl'}`}>
-              We are a forward-thinking creative agency dedicated to pushing the boundaries of digital innovation.
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
