@@ -504,10 +504,10 @@ const Services = () => {
                     </CardContent>
                   </Card>
                   
-                  {/* Enhanced connector line with animation */}
+                  {/* Enhanced connector line with arrow */}
                   {index < process.length - 1 && (
                     <motion.div 
-                      className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary/30 to-primary/10 transform -translate-y-1/2"
+                      className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2"
                       initial={{ scaleX: 0, opacity: 0 }}
                       whileInView={{ scaleX: 1, opacity: 1 }}
                       transition={{ 
@@ -516,7 +516,22 @@ const Services = () => {
                         ease: "easeOut"
                       }}
                       viewport={{ once: true }}
-                    />
+                    >
+                      <div className="flex items-center">
+                        <div className="w-6 h-0.5 bg-gradient-to-r from-primary/30 to-primary/20"></div>
+                        <motion.div
+                          className="w-0 h-0 border-l-[6px] border-l-primary/40 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-1"
+                          animate={{
+                            x: [0, 2, 0],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+                      </div>
+                    </motion.div>
                   )}
                 </motion.div>
               );
