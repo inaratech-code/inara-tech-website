@@ -368,47 +368,159 @@ const Services = () => {
       {/* Process Section */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Process</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center mb-16">
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold mb-4"
+              initial={{ 
+                opacity: 0, 
+                y: -40, 
+                rotateX: -20,
+                scale: 0.9
+              }}
+              whileInView={{ 
+                opacity: 1, 
+                y: 0, 
+                rotateX: 0,
+                scale: 1
+              }}
+              transition={{ 
+                duration: 1.0, 
+                delay: 0.1,
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+              }}
+              viewport={{ once: true }}
+              whileHover={{
+                rotateX: 10,
+                rotateY: 5,
+                scale: 1.05,
+                z: 30,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              Our <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">Process</span>
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-muted-foreground max-w-2xl mx-auto"
+              initial={{ 
+                opacity: 0, 
+                x: -60, 
+                rotateY: -30,
+                scale: 0.95
+              }}
+              whileInView={{ 
+                opacity: 1, 
+                x: 0, 
+                rotateY: 0,
+                scale: 1
+              }}
+              transition={{ 
+                duration: 0.9, 
+                delay: 0.3,
+                type: "spring",
+                stiffness: 80,
+                damping: 12
+              }}
+              viewport={{ once: true }}
+              whileHover={{
+                rotateX: -5,
+                rotateY: -8,
+                scale: 1.03,
+                z: 25,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
               A proven methodology that ensures successful project delivery every time.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
-              <motion.div
-                key={step.step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <Card className="text-center hover:shadow-lg transition-all duration-300" data-cursor-text={`Learn ${step.title}`}>
-                  <CardHeader>
-                    <div className="mx-auto mb-4 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                      <span className="text-2xl font-bold text-primary">{step.step}</span>
-                    </div>
-                    <CardTitle className="text-lg">{step.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>{step.description}</CardDescription>
-                  </CardContent>
-                </Card>
-                
-                {/* Connector line */}
-                {index < process.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-primary/20 transform -translate-y-1/2" />
-                )}
-              </motion.div>
-            ))}
+            {process.map((step, index) => {
+              // Different animation styles for each card
+              const cardAnimations = [
+                {
+                  initial: { opacity: 0, x: -50, rotateY: -25, scale: 0.8 },
+                  animate: { opacity: 1, x: 0, rotateY: 0, scale: 1 },
+                  hover: { rotateX: 8, rotateY: 5, scale: 1.05, z: 30 }
+                },
+                {
+                  initial: { opacity: 0, y: 50, rotateX: 25, scale: 0.8 },
+                  animate: { opacity: 1, y: 0, rotateX: 0, scale: 1 },
+                  hover: { rotateX: -8, rotateY: -5, scale: 1.05, z: 30 }
+                },
+                {
+                  initial: { opacity: 0, x: 50, rotateY: 25, scale: 0.8 },
+                  animate: { opacity: 1, x: 0, rotateY: 0, scale: 1 },
+                  hover: { rotateX: 5, rotateY: 8, scale: 1.05, z: 30 }
+                },
+                {
+                  initial: { opacity: 0, y: -50, rotateX: -25, scale: 0.8 },
+                  animate: { opacity: 1, y: 0, rotateX: 0, scale: 1 },
+                  hover: { rotateX: -5, rotateY: -8, scale: 1.05, z: 30 }
+                }
+              ];
+
+              const animation = cardAnimations[index];
+
+              return (
+                <motion.div
+                  key={step.step}
+                  initial={animation.initial}
+                  whileInView={animation.animate}
+                  transition={{ 
+                    duration: 1.0, 
+                    delay: 0.5 + (index * 0.15),
+                    type: "spring",
+                    stiffness: 80,
+                    damping: 12
+                  }}
+                  viewport={{ once: true }}
+                  whileHover={{
+                    ...animation.hover,
+                    transition: { duration: 0.3, ease: "easeOut" }
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
+                  className="relative"
+                >
+                  <Card className="text-center hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30" data-cursor-text={`Learn ${step.title}`}>
+                    <CardHeader>
+                      <motion.div 
+                        className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center"
+                        whileHover={{
+                          scale: 1.1,
+                          rotate: 360,
+                          transition: { duration: 0.6, ease: "easeOut" }
+                        }}
+                      >
+                        <span className="text-2xl font-bold text-primary">{step.step}</span>
+                      </motion.div>
+                      <CardTitle className="text-lg font-semibold">{step.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-sm leading-relaxed">{step.description}</CardDescription>
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Enhanced connector line with animation */}
+                  {index < process.length - 1 && (
+                    <motion.div 
+                      className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary/30 to-primary/10 transform -translate-y-1/2"
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      whileInView={{ scaleX: 1, opacity: 1 }}
+                      transition={{ 
+                        duration: 0.8, 
+                        delay: 0.8 + (index * 0.15),
+                        ease: "easeOut"
+                      }}
+                      viewport={{ once: true }}
+                    />
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
