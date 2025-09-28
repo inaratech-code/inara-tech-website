@@ -75,7 +75,7 @@ const TestimonialsPage = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center flex flex-col items-center justify-center">
           <motion.div
             variants={titleVariants}
             whileHover={{
@@ -216,7 +216,7 @@ const TestimonialsPage = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center">
           <motion.div
             className="bg-gradient-to-br from-background/50 to-background/30 backdrop-blur-sm rounded-xl p-8 md:p-12 border border-border/30"
             whileHover={{

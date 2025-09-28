@@ -191,7 +191,7 @@ const Contact = () => {
       
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-[#1e3a8a]/5 via-background to-[#93c5fd]/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 50, rotateX: -25, rotateY: -10, scale: 0.9, z: -100 }}
             animate={{ opacity: 1, y: 0, rotateX: 0, rotateY: 0, scale: 1, z: 0 }}

@@ -230,7 +230,7 @@ const Home = () => {
 
       {/* Hero Section with Enhanced 3D Effects */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 md:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center flex flex-col items-center justify-center">
           <motion.div 
             className="space-y-8"
             variants={staggerContainer}
