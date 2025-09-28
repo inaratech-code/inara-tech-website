@@ -366,7 +366,7 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.h2 
@@ -400,7 +400,7 @@ const Services = () => {
               }}
               style={{ transformStyle: "preserve-3d" }}
             >
-              Our <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">Process</span>
+              Our <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Process</span>
             </motion.h2>
             <motion.p 
               className="text-xl text-muted-foreground max-w-2xl mx-auto"
@@ -485,22 +485,32 @@ const Services = () => {
                   style={{ transformStyle: "preserve-3d" }}
                   className="relative"
                 >
-                  <Card className="text-center hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30" data-cursor-text={`Learn ${step.title}`}>
+                  <Card className="text-center hover:shadow-2xl transition-all duration-300 border-2 hover:border-transparent bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 hover:from-blue-100/50 hover:via-purple-100/50 hover:to-pink-100/50" data-cursor-text={`Learn ${step.title}`}>
                     <CardHeader>
                       <motion.div 
-                        className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center"
+                        className={`mx-auto mb-4 w-16 h-16 rounded-full flex items-center justify-center ${
+                          index === 0 ? 'bg-gradient-to-br from-blue-400 to-blue-600' :
+                          index === 1 ? 'bg-gradient-to-br from-purple-400 to-purple-600' :
+                          index === 2 ? 'bg-gradient-to-br from-green-400 to-green-600' :
+                          'bg-gradient-to-br from-pink-400 to-pink-600'
+                        } shadow-lg`}
                         whileHover={{
-                          scale: 1.1,
+                          scale: 1.15,
                           rotate: 360,
                           transition: { duration: 0.6, ease: "easeOut" }
                         }}
                       >
-                        <span className="text-2xl font-bold text-primary">{step.step}</span>
+                        <span className="text-2xl font-bold text-white drop-shadow-sm">{step.step}</span>
                       </motion.div>
-                      <CardTitle className="text-lg font-semibold">{step.title}</CardTitle>
+                      <CardTitle className={`text-lg font-semibold ${
+                        index === 0 ? 'text-blue-700' :
+                        index === 1 ? 'text-purple-700' :
+                        index === 2 ? 'text-green-700' :
+                        'text-pink-700'
+                      }`}>{step.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-sm leading-relaxed">{step.description}</CardDescription>
+                      <CardDescription className="text-sm leading-relaxed text-gray-600">{step.description}</CardDescription>
                     </CardContent>
                   </Card>
                   
