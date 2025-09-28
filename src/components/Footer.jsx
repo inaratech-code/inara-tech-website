@@ -307,6 +307,17 @@ const Footer = () => {
                     Reset
                   </button>
                 )}
+                {/* Reset button for production */}
+                <button
+                  onClick={() => {
+                    localStorage.removeItem('site_total_views')
+                    setSiteViews(0)
+                  }}
+                  className="ml-2 text-xs text-blue-500 hover:text-blue-700 underline"
+                  title="Reset site visit counter"
+                >
+                  Reset Visits
+                </button>
               </motion.div>
 
               {/* Credit */}
