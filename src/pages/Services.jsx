@@ -286,11 +286,6 @@ const Services = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button asChild className="w-full" variant="outline" data-cursor-text="Learn More">
-                      <Link to="/contact">
-                        Learn More
-                      </Link>
-                    </Button>
                   </CardContent>
                 </Card>
               </motion.div>
