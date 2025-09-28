@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence } from 'framer-motion'
 import { ThemeProvider } from './context/ThemeContext'
 import { usePageTitle } from './hooks/usePageTitle'
-import Lenis from '@studio-freight/lenis'
+import Lenis from 'lenis'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
@@ -69,23 +69,30 @@ function AppContent() {
   // Initialize Lenis smooth scrolling - Optimized for performance
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: 'vertical',
       gestureDirection: 'vertical',
       smooth: true,
-      mouseMultiplier: 1.0,
-      smoothTouch: true,
-      touchMultiplier: 2.0,
+      mouseMultiplier: 1.2,
+      smoothTouch: false,
+      touchMultiplier: 2.5,
       infinite: false,
       normalizeWheel: true,
-      wheelMultiplier: 1.0,
+      wheelMultiplier: 1.2,
       syncTouch: true,
-      syncTouchLerp: 0.075,
+      syncTouchLerp: 0.1,
     })
 
     // Make Lenis globally accessible
     window.lenis = lenis
+
+    // Enhanced scroll event handling
+    lenis.on('scroll', (e) => {
+      // Add custom scroll effects here if needed
+      // e.velocity for scroll speed
+      // e.direction for scroll direction
+    })
 
     function raf(time) {
       lenis.raf(time)
@@ -99,10 +106,19 @@ function AppContent() {
       lenis.resize()
     }
 
+    // Handle orientation change for mobile
+    const handleOrientationChange = () => {
+      setTimeout(() => {
+        lenis.resize()
+      }, 100)
+    }
+
     window.addEventListener('resize', handleResize)
+    window.addEventListener('orientationchange', handleOrientationChange)
 
     return () => {
       window.removeEventListener('resize', handleResize)
+      window.removeEventListener('orientationchange', handleOrientationChange)
       lenis.destroy()
       window.lenis = null
     }

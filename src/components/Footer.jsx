@@ -294,30 +294,6 @@ const Footer = () => {
               >
                 <Eye size={isMobile ? 14 : 16} className="text-primary" />
                 <span className="font-medium">{siteViews.toLocaleString()} visits</span>
-                {/* Reset button for testing (only visible in development) */}
-                {process.env.NODE_ENV === 'development' && (
-                  <button
-                    onClick={() => {
-                      localStorage.removeItem('site_total_views')
-                      setSiteViews(0)
-                    }}
-                    className="ml-2 text-xs text-red-500 hover:text-red-700 underline"
-                    title="Reset counter (dev only)"
-                  >
-                    Reset
-                  </button>
-                )}
-                {/* Reset button for production */}
-                <button
-                  onClick={() => {
-                    localStorage.removeItem('site_total_views')
-                    setSiteViews(0)
-                  }}
-                  className="ml-2 text-xs text-blue-500 hover:text-blue-700 underline"
-                  title="Reset site visit counter"
-                >
-                  Reset Visits
-                </button>
               </motion.div>
 
               {/* Credit */}

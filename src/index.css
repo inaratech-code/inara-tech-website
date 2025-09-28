@@ -8,6 +8,18 @@
 /* Enhanced smooth scrolling with momentum */
 html {
   scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
+/* Improved smooth scrolling for all browsers */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced smooth scrolling for webkit browsers */
+html, body {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Scroll-based transitions and animations */
